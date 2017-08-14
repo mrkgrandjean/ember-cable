@@ -6,7 +6,7 @@ var Subscriptions = Ember.Object.extend({
   subscriptions: Ember.A(),
 
   create(channelName, mixin) {
-    let params = Ember.isEqual(Ember.typeOf(channelName), 'object') ? channelName : channelName ;
+    let params = Ember.isEqual(Ember.typeOf(channelName), 'object') ? channelName : { channel: channelName };
     return Subscription.extend(Ember.Mixin.create(mixin), {
       subscriptions: this, params: params
     }).create(Ember.getOwner(this).ownerInjection());
@@ -66,7 +66,7 @@ var Subscriptions = Ember.Object.extend({
   },
 
   sendCommand(subscription, command) {
-    let identifier = subscription.get('identifier');
+    let identifier = JSON.parse(subscription.get('identifier'));
     if(Ember.isEqual(identifier, '_ping')) {
       this.get('consumer.connection').isOpen();
     } else {
