@@ -66,7 +66,7 @@ var Subscriptions = Ember.Object.extend({
   },
 
   sendCommand(subscription, command) {
-    let identifier = JSON.parse(subscription.get('identifier'));
+    let identifier = subscription.get('identifier');
     if(Ember.isEqual(identifier, '_ping')) {
       this.get('consumer.connection').isOpen();
     } else {
