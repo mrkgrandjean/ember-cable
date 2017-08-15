@@ -51,12 +51,12 @@ var ConnectionMonitor = Ember.Object.extend({
   },
 
   reconnectIfStale() {
-    if(this.connectionIsStale()) {
-      this.incrementProperty('reconnectAttempts');
-      if(!this.disconnectedRecently()) {
-        this.get('connection').reopen();
-      }
-    }
+    // if(this.connectionIsStale()) {
+    //   this.incrementProperty('reconnectAttempts');
+    //   if(!this.disconnectedRecently()) {
+    //     this.get('connection').reopen();
+    //   }
+    // }
   },
 
   connectionIsStale() {
