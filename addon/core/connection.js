@@ -56,6 +56,9 @@ export default Ember.Object.extend({
   events: {
     message(event) {
       let data = JSON.parse(event.data);
+      if(data.identifier === "_ping"){
+        this.get('monitor').ping();
+      }
       switch (data.type) {
         case 'welcome':
           this.get('monitor').connected();
